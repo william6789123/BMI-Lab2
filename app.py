@@ -31,6 +31,18 @@ def bmi_guidance(bmi):
     }
 
 
+def military_service_status(bmi):
+    if bmi < 18.5 or bmi >= 27:
+        return {
+            "service_label": "需進一步評估",
+            "service_status": "BMI 偏離常見範圍，建議依照體檢與醫療評估結果再確認是否適合服役。",
+        }
+    return {
+        "service_label": "可列入兵役評估",
+        "service_status": "BMI 在常見範圍內，應可依正式體檢標準進一步判定是否適合服役。",
+    }
+
+
 def parse_positive_number(value):
     try:
         number = float(value)
@@ -68,7 +80,11 @@ def index():
                     errors["weight"] = "無法使用這組數值計算 BMI，請檢查身高與體重。"
                 else:
                     displayed_bmi = round(bmi, 1)
-                    result = {"bmi": f"{displayed_bmi:.1f}", **bmi_guidance(displayed_bmi)}
+                    result = {
+                        "bmi": f"{displayed_bmi:.1f}",
+                        **bmi_guidance(displayed_bmi),
+                        **military_service_status(displayed_bmi),
+                    }
 
     return render_template(
         "index.html",

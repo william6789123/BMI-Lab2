@@ -69,6 +69,11 @@
                 <span class="result-label">你的體位屬於 <strong>{{ result.label }}</strong></span>
                 <h2 id="result-title">給你的健康建議</h2>
                 <p>{{ result.advice }}</p>
+
+                <div class="service-status" aria-live="polite">
+                  <h3>服役建議</h3>
+                  <p><strong>{{ result.service_label }}</strong>：{{ result.service_status }}</p>
+                </div>
                 <span class="result-decoration" aria-hidden="true">✳</span>
               </section>
             {% else %}
