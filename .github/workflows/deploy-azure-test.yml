@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - app.py
+      - bmi_service.py
       - serve.py
       - requirements.txt
       - templates/**
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - app.py
+      - bmi_service.py
       - serve.py
       - requirements.txt
       - templates/**
